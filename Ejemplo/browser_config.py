@@ -15,7 +15,8 @@ class BrowserConfig:
     def setup_browser(self):
         if self.browser_name == "Chrome":
             #Configurate the ChromeDriver Service
-            driver_path = "C:\WebDrivers\chromedriver-win64\chromedriver.exe"
+            driver_path = "/Users/alfredoarredondo/Documents/Python/Selenium/WebDrivers/chromedriver-mac-arm64/chromedriver" #Ruta para MAC
+            #driver_path = "C:\WebDrivers\chromedriver-win64\chromedriver.exe" #Ruta para Windows
             service = Service(driver_path)
             self.driver = webdriver.Chrome(service=service)
         
