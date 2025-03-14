@@ -12,23 +12,24 @@ class BrowserConfig:
         self.browser_name = browser_name #Crea una variable para tomar el valor del nombre del navegador
         self.driver = None #Crea una variable vacia para el driver
     
-    def setup_browser(self):
-        if self.browser_name == "Chrome":
-            #Configurate the ChromeDriver Service
-            driver_path = "/Users/alfredoarredondo/Documents/Python/Selenium/WebDrivers/chromedriver-mac-arm64/chromedriver" #Ruta para MAC
-            #driver_path = "C:\WebDrivers\chromedriver-win64\chromedriver.exe" #Ruta para Windows
-            service = Service(driver_path)
-            self.driver = webdriver.Chrome(service=service)
-        
-        elif self.browser_name == "Edge":
-            #Configurate the EdgeDriver Service
-            driver_path = "C:\WebDrivers\edgedriver-win64\msedgedriver.exe"
-            service = Service(driver_path)
-            self.driver = webdriver.Edge(service=service)
+    try:
+        def setup_browser(self):
+            if self.browser_name == "Chrome":
+                #Configurate the ChromeDriver Service
+                driver_path = "/Users/alfredoarredondo/Documents/Python/Selenium/WebDrivers/chromedriver-mac-arm64/chromedriver" #Ruta para MAC
+                #driver_path = "C:\WebDrivers\chromedriver-win64\chromedriver.exe" #Ruta para Windows
+                service = Service(driver_path)
+                self.driver = webdriver.Chrome(service=service)
+            
+            elif self.browser_name == "Edge":
+                #Configurate the EdgeDriver Service
+                driver_path = "C:\WebDrivers\edgedriver-win64\msedgedriver.exe"
+                service = Service(driver_path)
+                self.driver = webdriver.Edge(service=service)
 
-        print(f"Navegador {self.browser_name} configurado correctamente.")
-
-    def close_browser(self):
-        if self.driver:
-            self.driver.quit()
-            print(f"Navegador {self.browser_name} Cerrado.")
+            print(f"Navegador {self.browser_name} configurado correctamente.")
+    finally:
+        def close_browser(self):
+            if self.driver:
+                self.driver.quit()
+                print(f"Navegador {self.browser_name} Cerrado.")
